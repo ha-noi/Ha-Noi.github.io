@@ -1,0 +1,2 @@
+export the photos as short edge set to 800 from lightroom
+to shrink the portrait orientation - use faststone resizer to make the height of these photos 800 px

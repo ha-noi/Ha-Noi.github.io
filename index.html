@@ -103,12 +103,10 @@
 							controls 
 							src=""
 							loop = "loop"
+							autoplay = "autoplay"
 							myaudio.volume = 0.2 >
 							Your user agent does not support the HTML5 Audio element.
 						</audio> <!-- css styles the myAusio element-->
-	<!-- 							autoplay = "autoplay" -->
-
-						<!--  -->
 					</li>					 
 				</ul>
 			</div> <!-- /.navbar-collapse -->
@@ -131,13 +129,13 @@
 			</div>
 		</div>
 	</header>
-	<p class="inview1"></p>
    <!-- Section 1 -->
 	<section id="section1">
 	</section>
 	<p></p>
 	<img src="./img/1-WarHero/2-_DSC1288.jpg">
 	<p></p>
+	<p class="inview1"></p>
 	<h2>Meeting the Old Guard  </h2>
 	 <!--  <a id="meeting-the-old-guard" class="anchor" href="#meeting-the-old-guard" aria-hidden="true"><span class="octicon octicon-link"></span></a> -->
 	<p>I was shot in Vietnam by an old man. He said he was seventy two years old when I managed to communicate with him using sign language. Even if he could speak I might not have understood him since he had only a few teeth. He was smiling and good natured. Wearing a yellow vest that hung loosely on his bones, he stood straight but leaned forward a little. He walked haltingly, as if each step caught him from falling. I was on the ground as he approached me. I looked up at him thinking what he might have been in a previous age. He was 24 years old in 1967. How he managed to survive without injury or illness to this day puzzled me, and still does. But maybe that is his secret, that he learned long ago to let go. He had no grudge against me personally, clearly an American, he approached me calmly. The sun was behind him and was blinding me. I thought he was a clever adversary to come at me from from that direction. But he kept smiling, as if he knew me, though he could not have. As I waited for the encounter to climax, I felt a memory from childhood wash over over me.
@@ -345,15 +343,16 @@
 			</div>
 		</div>
 	</div>
-	<p class="inview2"></p>
+
 	<p>I can pass for an Arab. Once I walked their streets, also unnoticed. And when the towers fell , I asked why but could not find an answer. We had not mined their land and harbors. B52s never darkened their skies. Napalm and agent orange never touched their skin. But here in Vietnam, these memories are real. How can Cong not hate me? Why are there no vietnamese crazies burning US flags? Did they have a lesson in forgiveness that is not taught in the rest of the world?
 	</p>
 	<p></p>
 	<img src="./img/2-B52/21-DSC_0274.jpg">
 	<p></p>
-		<p></p>
+	<p></p>
 	<img src="./img/2-B52/22-_DSC0924.jpg">
 	<p></p>
+		<p class="inview2"></p>
 	 <p>
 	 The B52 is ahead. A scarred carcass of metal is black in the sun. Cong sees it as an alien artifact. Pieces are laid out just so. Most are recognizable for the parts they were except for a tangled nest of scorched steel and aluminum. 
 	 </p>
@@ -1397,11 +1396,11 @@
 		}
 		function myFunctionT1() {
 		   document.getElementById('myAudio').src = "./music/1Milk.mp3";
-		   // myAudio.play();
+		   myAudio.play();
 		}
 		function myFunctionT2() {
 			myVol= myAudio.volume;
-			$("#myAudio").animate({volume: 0}, 1000, function(){
+			$("#myAudio").animate({volume: 0}, 3000, function(){
 				document.getElementById('myAudio').src = "./music/2Cola.mp3";
 				myAudio.play();
 					});
@@ -1410,7 +1409,7 @@
 		}
 		function myFunctionT3() {
 			myVol= myAudio.volume;
-			$("#myAudio").animate({volume: 0}, 1000, function(){
+			$("#myAudio").animate({volume: 0}, 3000, function(){
 				document.getElementById('myAudio').src = "./music/3Gods.mp3";
 				myAudio.play();
 					});
@@ -1419,7 +1418,7 @@
 		}
 		function myFunctionT4() {
 			myVol= myAudio.volume;
-			$("#myAudio").animate({volume: 0}, 1000, function(){
+			$("#myAudio").animate({volume: 0}, 3000, function(){
 				document.getElementById('myAudio').src = "./music/4Honey.mp3";
 				myAudio.play();
 					});
@@ -1429,7 +1428,7 @@
 		}
 		function myFunctionT5() {
 			myVol= myAudio.volume;
-			$("#myAudio").animate({volume: 0}, 1000, function(){
+			$("#myAudio").animate({volume: 0}, 3000, function(){
 				document.getElementById('myAudio').src = "./music/5Harmonium.mp3";
 				myAudio.play();
 					});
@@ -1439,7 +1438,7 @@
 		}
 		function myFunctionT6() {
 			myVol= myAudio.volume;
-			$("#myAudio").animate({volume: 0}, 1000, function(){
+			$("#myAudio").animate({volume: 0}, 3000, function(){
 				document.getElementById('myAudio').src = "./music/6Summertimes.mp3";
 				myAudio.play();
 					});
@@ -1454,15 +1453,12 @@
 
 		$('p.inview1').bind('inview', function (event, visible) {
 		    	if (visible && oldInview != 'view1') {
-			      // $(this).text('Yay! You can see me1!');
 			      myFunctionT1();
 			      oldInview = "view1";
 			    } else {
-			      // $(this).text('Hidden again. Muhahah!');
 			      myFunctionP1();
 			    }
 			  });
-
 
 		$('p.inview2').bind('inview', function (event, visible) {
 		    if (visible && oldInview != 'view2') {
@@ -1478,42 +1474,34 @@
 
 		$('p.inview3').bind('inview', function (event, visible) {
 			    if (visible && oldInview != 'view3') {
-			      // $(this).text('Yay! You can see me2!');
 			      myFunctionT3();
 			      oldInview = "view3";
 			    } else {
-			      // $(this).text('Hidden again. Muhahah!');
 			      myFunctionP1();
 			    }
 			  });
 
 		$('p.inview4').bind('inview', function (event, visible) {
 			    if (visible && oldInview != 'view4') {
-			      // $(this).text('Yay! You can see me2!');
 			      myFunctionT4();
   			      oldInview = "view4";
 			    } else {
-			      // $(this).text('Hidden again. Muhahah!');
 			      myFunctionP1();
 			    }
 			  });
 		$('p.inview5').bind('inview', function (event, visible) {
 			    if (visible && oldInview != 'view5') {
-			      // $(this).text('Yay! You can see me2!');
 			      myFunctionT5();
   			      oldInview = "view5";
 			    } else {
-			      // $(this).text('Hidden again. Muhahah!');
 			      myFunctionP1();
 			    }
 			  });
 		$('p.inview6').bind('inview', function (event, visible) {
 			    if (visible && oldInview != 'view6') {
-			      // $(this).text('Yay! You can see me2!');
 			      myFunctionT6();
 			      oldInview = "view6";
 			    } else {
-			      // $(this).text('Hidden again. Muhahah!');
 			      myFunctionP1();
 			    }
 			  });
@@ -1555,12 +1543,8 @@
 	<!-- Plugin JavaScript -->
 	<script src="js/jquery.easing.min.js"></script>
 
-	<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-   <!--  // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script> -->
-
 	<!-- Custom Theme JavaScript -->
 	<script src="js/grayscale2.js"></script>
-	<!--<script src="js/flickity.pkgd.min.js"></script>-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 

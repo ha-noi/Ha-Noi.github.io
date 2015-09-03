@@ -1,0 +1,59 @@
+This code takes three arguments, the left delimiter, the right delimiter and the target text that is to be found within the two delimiters.
+It opens a file named index.
+It looks for the first pair of delimiters and selects the entire text between the two delimiters (that include the target). This selection is a path to a file.
+This selection is then replaced with a URL. It gets the URL from another file named CDN.
+The URL it selects depends on whether the target text in the original file has the word 'thumbs' in its path.
+
+
+	so for example
+
+The delimiters are the quote marks, 
+the target text is:		DSC1288
+the found chunk is:		./img/1-WarHero/2-_DSC1288.jpg
+
+	When the code is run, this line in the file named 'index'
+		<img src="./img/1-WarHero/2-_DSC1288.jpg">
+
+	becomes this line in the file 
+		<img src="https://cloud.githubusercontent.com/assets/13722460/9616761/e845b116-50cd-11e5-8c33-b5e34e40beda.jpg">
+
+	It gets the above URL from a file named CDN which has a bunch of lines of them looks like this:
+	![2-_dsc1288](https://cloud.githubusercontent.com/assets/13722460/9616761/e845b116-50cd-11e5-8c33-b5e34e40beda.jpg)
+
+
+	another example:
+
+The delimiters are the quote marks, 
+the target text is:		DSC_0413
+the found chunk is:		./img/1-WarHero/thumbs/21-DSC_0413.jpg
+
+	in the file, index, the line:
+		<img class="gallery-cell-image" data-flickity-lazyload="./img/1-WarHero/thumbs/21-DSC_0413.jpg" srcset="./img/1-WarHero/21-DSC_0413.jpg 3x, ./img/1-WarHero/thumbs/21-DSC_0413.jpg 1x"></div>
+
+	becomes
+		<img class="gallery-cell-image" data-flickity-lazyload="https://cloud.githubusercontent.com/assets/13722460/9616793/21ed47da-50ce-11e5-956c-507391d8a719.jpg" srcset="https://cloud.githubusercontent.com/assets/13722460/9616760/e8449736-50cd-11e5-913c-6f042486a687.jpg 3x, https://cloud.githubusercontent.com/assets/13722460/9616793/21ed47da-50ce-11e5-956c-507391d8a719.jpg 1x"></div>
+
+	It gets the url from a file named thumbsCDN which has a bunch of lines that look like this
+		![21-dsc_0413](https://cloud.githubusercontent.com/assets/13722460/9616793/21ed47da-50ce-11e5-956c-507391d8a719.jpg)
+
+
+
+
+
+Here is my pseudocode:
+
+open the file named index
+repeat the loop below till the end of the file
+	look for the left delimiter, look for the right delimiter
+	is the target in the found chunk?
+	Yes: 
+		is the word 'thumbs' in the found chunk?
+			Yes: open the thumbCDN file
+				look for the target
+				expand to include entire url
+				copy url into file replacing found chunk
+			No: open the CDN file
+				do the same three steps as above
+	No:
+		mpve on to the next left delimiter
+
